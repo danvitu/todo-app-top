@@ -1,8 +1,19 @@
 import './style.css';
-import { addProjectModal, addTodoModal, displayProjects, initializeModal } from './displayController';
+import { displayProjects, displayTodos } from './displayController';
+import { initializeTodoModal, addTodoModal, addProjectModal } from './popups';
+import { createNewTodo, addTodoToList } from './createTodo';
+import { createNewList, addListToProjects } from './createProject';
 
-// Run App 
+// Create default Project
+const defList = createNewList('Default');
+addListToProjects(defList);
+
+// Test Todo
+const newTodo = createNewTodo('Create a website', 'Using Tilda', '20-02-2024', 'mid', 'Default');
+addTodoToList(newTodo);
+
+displayTodos(defList);
 displayProjects();
-initializeModal();
-addTodoModal();
 addProjectModal();
+initializeTodoModal();
+addTodoModal();
