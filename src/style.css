@@ -1,0 +1,114 @@
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #111111;
+}
+
+.container {
+  display: grid;
+  grid-template-rows: 60px 1fr;
+  grid-template-columns: 200px 1fr;
+  height: 100vh;
+}
+
+.header {
+  grid-column: 1 / 3;
+
+  border-bottom: 3px solid black;
+  display: flex;
+  padding-left: 10px;
+}
+
+.sidebar {
+  grid-row: 2 / 3;
+  background-color: rgb(255, 255, 255);
+}
+
+.main {
+  grid-column: 2 / 3;
+  grid-row: 2 / 3;
+  background-color: lightblue;
+}
+
+.menu {
+  display: grid;
+  gap: 20px;
+  padding: 10px;
+}
+
+.projects {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.project {
+  display: flex;
+  justify-content: space-between;
+}
+
+.project-name:hover {
+  cursor: pointer;
+}
+
+button.btn-new-project-modal {
+  width: 100px;
+  border-radius: 10px;
+  justify-self: center;
+}
+
+.main {
+  display: grid;
+  padding: 20px;
+  grid-template-rows: 30px 1fr;
+  gap: 20px;
+}
+
+button.btn-new-todo-modal {
+  width: 200px;
+  justify-self: center;
+  border-radius: 20px;
+}
+
+.todos {
+  grid-row: 2 / 3;
+  display: grid;
+  grid-auto-rows: 50px;
+  gap: 10px;
+}
+
+.todo-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: white;
+  padding: 10px;
+}
+
+.new-todo-dialog {
+  margin: auto;
+}
+
+dialog {
+  padding: 10px;
+  width: 400px;
+}
+
+.add-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+dialog::backdrop {
+  background-color: blue;
+  opacity: 0.75;
+}
+
