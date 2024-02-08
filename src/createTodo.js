@@ -1,8 +1,14 @@
 import { Projects } from "./createProject";
+import { format } from "date-fns";
 
 function createNewTodo (title, desc, dueDate, priority, list) {
   const complete = false;
-  return {title, desc, dueDate, priority, list, complete}
+  return {title,
+          desc,
+          dueDate: format(new Date(dueDate), 'dd LLLL yyyy'),
+          priority,
+          list,
+          complete}
 }
 
 function addTodoToList (todo) {

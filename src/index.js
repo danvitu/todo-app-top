@@ -9,7 +9,7 @@ const defList = createNewList('Default');
 addListToProjects(defList);
 
 // Test Todo
-const newTodo = createNewTodo('Create a website', 'Using Tilda', '20-02-2024', 'mid', 'Default');
+const newTodo = createNewTodo('Create a website', 'Using Tilda', '2024 8 2', 'mid', 'Default');
 addTodoToList(newTodo);
 
 displayTodos(defList);

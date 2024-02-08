@@ -5,7 +5,11 @@ import { displayProjects, displayTodos } from "./displayController";
 function addProjectModal() {
   const addNewProjectModal = document.querySelector('.btn-new-project-modal');
   addNewProjectModal.addEventListener('click', () => {
-    const propmtInput = prompt('Enter new Project name');
+    let propmtInput = prompt('Enter new Project name');
+    if (propmtInput === null || propmtInput === '') {
+      alert('Project should have name');
+      return
+    }
     const newList = createNewList(propmtInput);
     addListToProjects(newList);
     displayProjects();
@@ -22,7 +26,13 @@ function initializeTodoModal() {
   });
 }
 
+function resetForm() {
+  const addTodoForm = document.querySelector('#addform');
+  addTodoForm.reset();
+}
+
 function refreshModalLists() {
+  resetForm();
   const todoList = document.querySelector('#list');
   todoList.textContent = '';
   Projects.forEach((list) => {
@@ -35,7 +45,6 @@ function refreshModalLists() {
 
 function addTodoModal() {
   const openTodoModal = document.querySelector('.new-todo-dialog');
-
   const todoTitle = document.querySelector('#title');
   const todoDesc = document.querySelector('#description');
   const todoDate = document.querySelector('#dueDate');
@@ -44,19 +53,20 @@ function addTodoModal() {
 
   const addNewTodoModalButton = document.querySelector('.add-button');
   addNewTodoModalButton.addEventListener('click', () => {
-    const newTodo = createNewTodo(todoTitle.value, todoDesc.value, todoDate.value, todoPriority.value, todoList.value)
-    addTodoToList(newTodo);
-    Projects.forEach((list) => {
+    if (todoTitle.checkValidity() && todoDate.checkValidity()) {
+      const newTodo = createNewTodo(todoTitle.value, todoDesc.value, todoDate.value, todoPriority.value, todoList.value)
+      addTodoToList(newTodo);
+      Projects.forEach((list) => {
       if (list.name === todoList.value) {
         displayTodos(list);
       }
     });
+    }
   });
 
   const closeModalButton = document.querySelector('.close-modal');
   closeModalButton.addEventListener('click', () => {
     openTodoModal.close();
-    console.log('closed');
   });
 }
 
