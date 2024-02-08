@@ -14,4 +14,12 @@ function addTodoToList (todo) {
   console.log(Projects);
 }
 
-export { createNewTodo, addTodoToList }
+function editTodo (todo) {
+  todo.title = 'New Title';
+}
+
+function changeCompleteStatus (todo) {
+  todo.complete = !todo.complete;
+}
+
+export { createNewTodo, addTodoToList, editTodo, changeCompleteStatus}

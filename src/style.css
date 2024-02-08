@@ -112,3 +112,7 @@ dialog::backdrop {
   opacity: 0.75;
 }
 
+.completed {
+  background-color: lightgreen;
+  text-decoration: line-through;
+}
