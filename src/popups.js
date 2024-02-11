@@ -1,25 +1,38 @@
 import { createNewTodo, addTodoToList } from "./createTodo";
 import { Projects, createNewList, addListToProjects } from "./createProject";
 import { displayProjects, displayTodos } from "./displayController";
+import Icon from './icons/plus-circle-svgrepo-com.svg';
+
+function createPlusIcon() {
+  const plusIcon = new Image();
+  plusIcon.src = Icon;
+  plusIcon.setAttribute('height', '20px');
+  return plusIcon;
+}
 
 function addProjectModal() {
   const addNewProjectModal = document.querySelector('.btn-new-project-modal');
+  addNewProjectModal.appendChild(createPlusIcon());
   addNewProjectModal.addEventListener('click', () => {
     let propmtInput = prompt('Enter new Project name');
-    if (propmtInput === null || propmtInput === '') {
+    if (propmtInput === '') {
       alert('Project should have name');
+      return
+    }
+    if (propmtInput === null) {
       return
     }
     const newList = createNewList(propmtInput);
     addListToProjects(newList);
     displayProjects();
-    console.log(Projects);
   });
 }
 
 function initializeTodoModal() {
   const openTodoModal = document.querySelector('.new-todo-dialog');
   const addNewTodoButton = document.querySelector('.btn-new-todo-modal');
+  const addTaskButtonText = document.querySelector('.add-task-text-button');
+  addNewTodoButton.insertBefore(createPlusIcon(), addTaskButtonText);
   addNewTodoButton.addEventListener('click', () => {
     openTodoModal.showModal();
     refreshModalLists();

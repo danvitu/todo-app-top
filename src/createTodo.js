@@ -1,11 +1,12 @@
 import { Projects } from "./createProject";
 import { format } from "date-fns";
+import { saveToStorage } from "./localStorage";
 
 function createNewTodo (title, desc, dueDate, priority, list) {
   const complete = false;
   return {title,
           desc,
-          dueDate: format(new Date(dueDate), 'dd LLLL yyyy'),
+          dueDate: format(new Date(dueDate), 'dd LLL yyyy'),
           priority,
           list,
           complete}
@@ -17,15 +18,11 @@ function addTodoToList (todo) {
       list.todos.push(todo);
     }
   });
-  console.log(Projects);
-}
-
-function editTodo (todo) {
-  todo.title = 'New Title';
+  saveToStorage(Projects);
 }
 
 function changeCompleteStatus (todo) {
   todo.complete = !todo.complete;
 }
 
-export { createNewTodo, addTodoToList, editTodo, changeCompleteStatus}
+export { createNewTodo, addTodoToList, changeCompleteStatus}

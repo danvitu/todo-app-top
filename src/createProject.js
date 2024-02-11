@@ -1,3 +1,5 @@
+import { saveToStorage } from "./localStorage";
+
 const Projects = [];
 
 function createNewList(list) {
@@ -8,6 +10,7 @@ function createNewList(list) {
 
 function addListToProjects(list) {
   Projects.push(list);
+  saveToStorage(Projects);
 }
 
 export { Projects, createNewList, addListToProjects }
